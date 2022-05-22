@@ -11,8 +11,6 @@ namespace Backend.Data
     {
         public DbSet<Player> Players { get; set; }
         public DbSet<Country> Countries { get; set; }
-        public DbSet<Blade> Blades { get; set; }
-        public DbSet<Brand> Brands { get; set; }
 
         public Context(DbContextOptions options) : base(options)
         {
@@ -28,15 +26,6 @@ namespace Backend.Data
             builder.Entity<Country>().ToTable("Country");
             builder.Entity<Country>().HasKey(c => c.Id);
             builder.Entity<Country>().Property(c => c.Id).ValueGeneratedOnAdd();
-
-            builder.Entity<Blade>().ToTable("Blade");
-            builder.Entity<Blade>().HasKey(b => b.Id);
-            builder.Entity<Blade>().Property(b => b.Id).ValueGeneratedOnAdd();
-            builder.Entity<Blade>().HasOne(b => b.Brand).WithMany();
-
-            builder.Entity<Brand>().ToTable("Brand");
-            builder.Entity<Brand>().HasKey(b => b.Id);
-            builder.Entity<Brand>().Property(b => b.Id).ValueGeneratedOnAdd();
         }
     }
 }

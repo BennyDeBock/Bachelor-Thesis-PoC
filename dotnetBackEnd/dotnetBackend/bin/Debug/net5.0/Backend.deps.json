@@ -38,6 +38,7 @@
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.10.13",
           "Npgsql": "5.0.13",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "5.0.10",
+          "Shared": "1.0.0",
           "Swashbuckle.AspNetCore": "5.6.3",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
@@ -548,6 +549,17 @@
         },
         "compile": {
           "Domain.dll": {}
+        }
+      },
+      "Shared/1.0.0": {
+        "dependencies": {
+          "Domain": "1.0.0"
+        },
+        "runtime": {
+          "Shared.dll": {}
+        },
+        "compile": {
+          "Shared.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
@@ -2434,6 +2446,11 @@
       "hashPath": "system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
     },
     "Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

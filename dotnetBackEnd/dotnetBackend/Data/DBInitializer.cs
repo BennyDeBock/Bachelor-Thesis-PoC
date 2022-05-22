@@ -55,86 +55,8 @@ namespace Backend.Data
                     
                 }
 
-                var dataBlades = ConvertCSVToData("C:\\Users\\BennyDB\\Documents\\School\\2021-2022\\Bachelorproef\\Bachelor-Thesis-PoC\\Datasets\\TableTennisBladeslist.csv");
-
-                AddBrands(_context, dataBlades);
-
-                foreach (DataRow r in dataBlades.Rows)
-                {
-                    string name;
-                    string brandName;
-
-                    // Extract name and brand of the blade
-                    var row = r[0].ToString();
-                    Console.WriteLine(row);
-                    if (row.StartsWith('('))
-                    {
-                        var split = row.Split(" ");
-                        brandName = "No Brand";
-                        name = row.Substring(split[0].Length + split[1].Length + 2);
-                    }
-                    else
-                    {
-                        var split = row.Split(" ");
-                        brandName = split[0];
-                        name = row.Substring(split[0].Length + 1);
-                    }
-
-                    double value;
-                    int valueInt;
-                    bool success = double.TryParse(r[1].ToString(), out value);
-                    double? speed = success ? value : null;
-                    success = double.TryParse(r[2].ToString(), out value);
-                    double? control = success ? value : null;
-                    success = double.TryParse(r[3].ToString(), out value);
-                    double? stiffness = success ? value : null;
-                    success = double.TryParse(r[4].ToString(), out value);
-                    double? overall = success ? value : null;
-                    var pricestr = r[5].ToString() == "" ? null : r[5].ToString().Substring(1);
-                    success = double.TryParse(pricestr, out value);
-                    double? price = success ? value : null;
-                    success = int.TryParse(r[6].ToString(), out valueInt);
-                    int ratings = success ? valueInt : 0;
-
-                    Brand brand = _context.Brands.Single(c => c.Name == brandName);
-
-                    _context.Blades.Add(
-                        new Blade(name, brand, speed, control, stiffness, overall, price, ratings)
-                    );
-
-                }
-
                 await _context.SaveChangesAsync();
             }
-        }
-
-        private static void AddBrands(Context _context, DataTable data)
-        {
-            HashSet<string> brands = new();
-
-            foreach (DataRow r in data.Rows)
-            {
-                var row = r[0].ToString();
-                var brandstr = "";
-
-                if (row.StartsWith('('))
-                {
-                    brandstr = "No Brand";
-                }
-                else
-                {
-                    brandstr = row.Split(" ")[0];
-                }
-
-                if (!brands.Contains(brandstr))
-                {
-                    brands.Add(brandstr);
-                    var brand = new Brand(brandstr);
-                    _context.Brands.Add(brand);
-                }
-            }
-
-            _context.SaveChanges();
         }
 
         private static void AddCountries(Context _context, DataTable data)

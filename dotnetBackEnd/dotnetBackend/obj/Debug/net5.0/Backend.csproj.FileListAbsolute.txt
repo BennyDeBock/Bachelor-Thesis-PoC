@@ -37,3 +37,5 @@ C:\Users\BennyDB\Documents\School\2021-2022\Bachelorproef\Bachelor-Thesis-PoC\do
 C:\Users\BennyDB\Documents\School\2021-2022\Bachelorproef\Bachelor-Thesis-PoC\dotnetBackEnd\dotnetBackend\obj\Debug\net5.0\ref\Backend.dll
 C:\Users\BennyDB\Documents\School\2021-2022\Bachelorproef\Bachelor-Thesis-PoC\dotnetBackEnd\dotnetBackend\obj\Debug\net5.0\Backend.pdb
 C:\Users\BennyDB\Documents\School\2021-2022\Bachelorproef\Bachelor-Thesis-PoC\dotnetBackEnd\dotnetBackend\obj\Debug\net5.0\Backend.genruntimeconfig.cache
+C:\Users\BennyDB\Documents\School\2021-2022\Bachelorproef\Bachelor-Thesis-PoC\dotnetBackEnd\dotnetBackend\bin\Debug\net5.0\Shared.dll
+C:\Users\BennyDB\Documents\School\2021-2022\Bachelorproef\Bachelor-Thesis-PoC\dotnetBackEnd\dotnetBackend\bin\Debug\net5.0\Shared.pdb

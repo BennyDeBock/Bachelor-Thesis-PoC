@@ -321,6 +321,19 @@
         "runtime": {
           "bin/placeholder/Domain.dll": {}
         }
+      },
+      "Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.dll": {}
+        }
       }
     }
   },
@@ -987,6 +1000,11 @@
       "type": "project",
       "path": "../dotnetDomain/Domain.csproj",
       "msbuildProject": "../dotnetDomain/Domain.csproj"
+    },
+    "Shared/1.0.0": {
+      "type": "project",
+      "path": "../Shared/Shared.csproj",
+      "msbuildProject": "../Shared/Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -996,6 +1014,7 @@
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.13",
       "Npgsql >= 5.0.13",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 5.0.10",
+      "Shared >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -1028,6 +1047,9 @@
           "projectReferences": {
             "C:\\Users\\BennyDB\\Documents\\School\\2021-2022\\Bachelorproef\\Bachelor-Thesis-PoC\\dotnetBackEnd\\dotnetDomain\\Domain.csproj": {
               "projectPath": "C:\\Users\\BennyDB\\Documents\\School\\2021-2022\\Bachelorproef\\Bachelor-Thesis-PoC\\dotnetBackEnd\\dotnetDomain\\Domain.csproj"
+            },
+            "C:\\Users\\BennyDB\\Documents\\School\\2021-2022\\Bachelorproef\\Bachelor-Thesis-PoC\\dotnetBackEnd\\Shared\\Shared.csproj": {
+              "projectPath": "C:\\Users\\BennyDB\\Documents\\School\\2021-2022\\Bachelorproef\\Bachelor-Thesis-PoC\\dotnetBackEnd\\Shared\\Shared.csproj"
             }
           }
         }

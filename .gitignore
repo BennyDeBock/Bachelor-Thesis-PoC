@@ -8,6 +8,8 @@ db.sqlite
 .swiftpm
 .env
 
+
+
 # User-specific files
 *.rsuser
 *.suo
