@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\BennyDB\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\BennyDB\\.nuget\\packages"
+    ]
+  }
+}
