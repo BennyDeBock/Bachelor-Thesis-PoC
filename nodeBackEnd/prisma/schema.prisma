@@ -8,23 +8,23 @@ datasource db {
 }
 
 model Country {
-  Id     String   @id(map: "PK_Country") @db.Uuid
-  Code   String?
-  Player Player[]
+  id     String   @id(map: "PK_Country") @db.Uuid @map("Id")
+  code   String? @map("code")
+  player Player[]
 }
 
 model Player {
-  Id        String   @id(map: "PK_Player") @db.Uuid
-  PlayerID  Int
-  Name      String?
-  Gender    Boolean
-  Active    Boolean
-  Birthyear Int?
-  PlayHand  String?
-  PlayStyle String?
-  Grip      String?
-  CountryId String?  @db.Uuid
-  Country   Country? @relation(fields: [CountryId], references: [Id], onDelete: Restrict, onUpdate: NoAction, map: "FK_Player_Country_CountryId")
+  id        String   @id(map: "PK_Player") @db.Uuid @map("id")
+  playerId  Int   @map("PlayerID")
+  name      String?   @map("Name")
+  gender    Boolean   @map("Gender")
+  active    Boolean   @map("Active")
+  birthyear Int?      @map("Birthyear")
+  playHand  String?   @map("PlayHand")
+  playStyle String?   @map("PlayStyle")
+  grip      String?   @map("Grip")
+  countryId String?  @db.Uuid @map("CountryId")
+  Country   Country? @relation(fields: [countryId], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "FK_Player_Country_CountryId")
 
-  @@index([CountryId], map: "IX_Player_CountryId")
+  @@index([countryId], map: "IX_Player_CountryId")
 }
