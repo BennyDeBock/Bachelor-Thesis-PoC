@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Country {
+  Id     String   @id(map: "PK_Country") @db.Uuid
+  Code   String?
+  Player Player[]
+}
+
+model Player {
+  Id        String   @id(map: "PK_Player") @db.Uuid
+  PlayerID  Int
+  Name      String?
+  Gender    Boolean
+  Active    Boolean
+  Birthyear Int?
+  PlayHand  String?
+  PlayStyle String?
+  Grip      String?
+  CountryId String?  @db.Uuid
+  Country   Country? @relation(fields: [CountryId], references: [Id], onDelete: Restrict, onUpdate: NoAction, map: "FK_Player_Country_CountryId")
+
+  @@index([CountryId], map: "IX_Player_CountryId")
+}
