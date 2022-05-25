@@ -8,22 +8,22 @@ datasource db {
 }
 
 model Country {
-  id     String   @id(map: "PK_Country") @default(dbgenerated("gen_random_uuid()")) @db.Uuid @map("Id")
+  id     String   @id(map: "PK_Country") @map("Id") @db.Uuid
   code   String?  @map("Code")
   Player Player[]
 }
 
 model Player {
-  id        String   @id(map: "PK_Player") @default(dbgenerated("gen_random_uuid()")) @db.Uuid @map("Id")
-  playerId  Int       @map("PlayerID")
-  name      String?   @map("Name")
-  gender    Boolean   @map("Gender")
-  active    Boolean   @map("Active")
-  birthyear Int?      @map("Birthyear")
-  playHand  String?   @map("PlayHand")
-  playStyle String?   @map("PlayStyle")
-  grip      String?   @map("Grip")
-  countryId String?  @db.Uuid @map("CountryId")
+  id        String   @id(map: "PK_Player") @map("Id") @db.Uuid
+  playerId  Int      @map("PlayerID")
+  name      String?  @map("Name")
+  gender    Boolean  @map("Gender")
+  active    Boolean  @map("Active")
+  birthyear Int?     @map("Birthyear")
+  playHand  String?  @map("PlayHand")
+  playStyle String?  @map("PlayStyle")
+  grip      String?  @map("Grip")
+  countryId String?  @map("CountryId") @db.Uuid
   Country   Country? @relation(fields: [countryId], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "FK_Player_Country_CountryId")
 
   @@index([countryId], map: "IX_Player_CountryId")

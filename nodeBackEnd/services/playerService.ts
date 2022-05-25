@@ -1,28 +1,42 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 import { Player } from "../Models/player";
+import { v4 as uuidv4 } from "uuid";
+import { info } from "console";
 
-const prisma = new PrismaClient()
 
-const getAllPlayers = async () => { 
-    return await prisma.player.findMany({
+
+export const getAllPlayers = async () => { 
+    const prisma = new PrismaClient()
+    const players =  await prisma.player.findMany({
         include: {
             Country: true
         },
     })
+
+    return players
 }
 
-const getAllPlayersWithoutCountry = async () => {
+export const getAllPlayersWithoutCountry = async () => {
+    const prisma = new PrismaClient()
     return await prisma.player.findMany()
 } 
 
-const getPlayerById = async (playerId: number) => {
-    return await prisma.player.findUnique({
-        include: { Country: true },
-        where: { id: `${playerId}` }
-    })
+export const getPlayerById = async (playerId: string) => {
+    try {
+        const prisma = new PrismaClient()
+        const player = await prisma.player.findUnique({
+            include: { Country: true },
+            where: { id: playerId },
+        })
+        return player
+    } catch (err) {
+        console.log(err)
+    }
+    
 }
 
-const getPercentageByCountry = async() => {
+export const getPercentageByCountry = async() => {
+    const prisma = new PrismaClient()
     const players = await prisma.player.findMany({
         include: { Country: true },
     })
@@ -44,7 +58,8 @@ const getPercentageByCountry = async() => {
     return percentages
 }
 
-const updatePlayer = async(player: Player) => {
+export const updatePlayer = async(player: Player) => {
+    const prisma = new PrismaClient()
     return await prisma.player.update({
         where: { id: player.id },
         data: {
@@ -54,7 +69,8 @@ const updatePlayer = async(player: Player) => {
     })
 }
 
-const createPlayer = async(player: Player) => {
+export const createPlayer = async(player: Player) => {
+    const prisma = new PrismaClient()
     const existingPlayer = await prisma.player.findFirst({
         include: { Country: true },
         where: { 
@@ -77,17 +93,22 @@ const createPlayer = async(player: Player) => {
 
             let newCountry = await prisma.country.create({
                 data: {
+                    id: uuidv4(),
                     code: countryCode
                 },
                 select: {
                     id: true
                 }
             })
+
+            player.country!.id = newCountry.id
+        } else {
+            player.country!.id = existingCountry.id
         }
 
         return await prisma.player.create({
-            where: { id: "42"},
             data: {
+                id: uuidv4(),
                 playerId: player.playerId,
                 name: player.name,
                 gender: player.gender,
@@ -95,7 +116,8 @@ const createPlayer = async(player: Player) => {
                 birthyear: player.birthyear,
                 playHand: player.playHand,
                 playStyle: player.playStyle,
-                grip: player.grip
+                grip: player.grip,
+                countryId: player.country?.id
             }
         })
     }
@@ -103,15 +125,15 @@ const createPlayer = async(player: Player) => {
     
 }
 
-const deletePlayer = async(id: string) => {
+export const deletePlayer = async(id: string) => {
+    const prisma = new PrismaClient()
     return await prisma.player.delete({
         where: { id: id }
     })
 }
 
 const playerWithCountry = Prisma.validator<Prisma.PlayerArgs>()({
-    include: { Country: true },
-    select: { playerId: true }
+    include: { Country: true }
 })
 type PlayerWithCountry = Prisma.PlayerGetPayload<typeof playerWithCountry>
 // npx prisma generate
