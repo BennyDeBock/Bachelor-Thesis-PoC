@@ -22,8 +22,8 @@ namespace Backend.Data
             _context.Database.EnsureDeleted();
             if (_context.Database.EnsureCreated())
             {
-                var dataPlayers = ConvertCSVToData("C:\\Users\\BennyDB\\Documents\\School\\2021-2022\\Bachelorproef\\Bachelor-Thesis-PoC\\Datasets\\archive\\ittf_player_info.csv");
-
+                //var dataPlayers = ConvertCSVToData("C:\\Users\\BennyDB\\Documents\\School\\2021-2022\\Bachelorproef\\Bachelor-Thesis-PoC\\Datasets\\archive\\ittf_player_info.csv");
+                var dataPlayers = ConvertCSVToData("/Users/bennydebock/Documents/School/21-22/SEM II - Bachelorproef/Bachelor-Thesis-PoC/Datasets/archive/ittf_player_info.csv");
                 AddCountries(_context, dataPlayers);
 
                 foreach (DataRow r in dataPlayers.Rows)

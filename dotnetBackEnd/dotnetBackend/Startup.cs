@@ -43,7 +43,7 @@ namespace dotnetBackend
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DBInitializer dBInitializer)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env/*DBInitializer dBInitializer*/)
         {
             if (env.IsDevelopment())
             {
@@ -63,7 +63,7 @@ namespace dotnetBackend
                 endpoints.MapControllers();
             });
 
-            dBInitializer.InitializeData().Wait();
+            //dBInitializer.InitializeData().Wait();
         }
     }
 }
