@@ -31,5 +31,5 @@ export declare type Player = {
 
 export declare type Country = {
     id: string,
-    code: string
+    code?: string
 }
