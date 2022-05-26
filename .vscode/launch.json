@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug Run (vaporBackEnd)",
+            "program": "${workspaceFolder:Bachelor-Thesis-PoC}/vaporBackEnd/.build/debug/Run",
+            "args": [],
+            "cwd": "${workspaceFolder:Bachelor-Thesis-PoC}/vaporBackEnd",
+            "preLaunchTask": "swift: Build Debug Run (vaporBackEnd)"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Release Run (vaporBackEnd)",
+            "program": "${workspaceFolder:Bachelor-Thesis-PoC}/vaporBackEnd/.build/release/Run",
+            "args": [],
+            "cwd": "${workspaceFolder:Bachelor-Thesis-PoC}/vaporBackEnd",
+            "preLaunchTask": "swift: Build Release Run (vaporBackEnd)"
+        }
+    ]
+}

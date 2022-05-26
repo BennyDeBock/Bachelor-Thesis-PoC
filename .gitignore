@@ -8,7 +8,7 @@ db.sqlite
 .swiftpm
 .env
 
-
+*/bin
 
 # User-specific files
 *.rsuser
