@@ -13,12 +13,12 @@ struct PlayerService {
     let logger: Logger
     let config = PostgresConnection.Configuration(
         connection: .init(
-            host: "localhost",
+            host: "bachelorproef.cot79hcuq61g.eu-west-2.rds.amazonaws.com",
             port: 5432
         ), authentication: .init(
             username: "benny",
             database: "bachelorproef",
-            password: "school"
+            password: "school123"
         ),
         tls: .disable
     )
